@@ -12,7 +12,9 @@ import { StatusComponent } from './status/status.component';
 import { McqComponent } from './mcq/mcq.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { AddtoFavComponent } from './addto-fav/addto-fav.component';
-import { AddtoFav } from './addto-fav';
+
+// For MDB Angular Free
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { AddtoFav } from './addto-fav';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
