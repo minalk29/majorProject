@@ -1,0 +1,13 @@
+<p>nav-fav works!</p>
+
+<button (click)="getFavList()">Favourite</button>
+
+<div>
+
+   <ul>
+    <li *ngFor="let a of myfavlist">
+        <b> {{a.quizs && a.quizs.quizname}} </b>           
+     </li>
+   </ul>
+</div>
+

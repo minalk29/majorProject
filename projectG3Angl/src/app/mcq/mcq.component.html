@@ -1,0 +1,93 @@
+
+
+  
+  
+ 
+
+    <!-- <p *ngFor="let a of que" >
+      <li *ngIf="mystatus" style="color: red;" >{{a.questions}}</li>
+      
+  </p> -->
+  
+  <!-- <button (click)="statusfun()">click</button> -->
+  <!-- <a (click)="quizlist()">quiz</a> -->
+  <button (click)="quizlist()">get</button>
+ <!-- <div *ngFor="let a of ques">
+  <li style="color: green;" >{{a.questions}}</li>
+  
+  <li *ngIf="a.status" style="color: red;" >{{a.questions}}</li>
+  <li *ngIf="!a.status" style="color: blue;" >{{a.questions}}</li>
+    
+  (click)="setAnswer(1,question.id,i)"
+ </div> -->
+ <!-- (click)="toggleSelected()" -->
+  
+ <div class="container">
+  <div >
+    <h2 class="fav1">Questions</h2>
+    <!-- <button class="fav2" mat-icon-button >
+      <mat-icon
+      *ngIf="selected"
+      aria-label="Example icon-button with a heart icon">
+      favorite
+    </mat-icon>
+    <mat-icon
+    *ngIf="!selected"
+    aria-label="Example icon-button with a heart icon">
+    favorite_border
+  </mat-icon>
+  
+  </button> -->
+  </div>
+  <br><br><br>
+  
+  <ul class="list-group" *ngFor="let question of ques; let i = index " >
+    
+    <li class="list-group-item" *ngIf="question.status"  > 
+      <div >
+        <label><p type="text">{{i+1}}. {{question.questions}}</p></label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" *ngIf="question.userAns==question.option1"  checked value="1" name="optradio{{i}}" disabled  >{{question.option1}}</label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" *ngIf="question.userAns==question.option2" checked value="2" name="optradio{{i}}" disabled >{{question.option2}}</label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" *ngIf="question.userAns==question.option3" checked value="3" name="optradio{{i}}" disabled >{{question.option3}}</label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" *ngIf="question.userAns==question.option4"  checked value="4" name="optradio{{i}}"  disabled>{{question.option4}}</label>
+      </div>
+      
+    </li>
+    <li class="list-group-item" *ngIf="!question.status"  style="color: blue;"> 
+      <div >
+        <label><p type="text">{{i+1}}. {{question.questions}}</p></label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" value="1" name="optradio{{i}}" (click)="setAnswer(question.option1,question.id)" >{{question.option1}}</label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" value="2" name="optradio{{i}}" (click)="setAnswer(question.option1,question.id)" >{{question.option2}}</label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" value="3" name="optradio{{i}}" (click)="setAnswer(question.option1,question.id)">{{question.option3}}</label>
+      </div>
+      <div  class="radio">
+        <label><input type="radio" value="4" name="optradio{{i}}" (click)="setAnswer(question.option1,question.id)">{{question.option4}}</label>
+      </div>
+      
+    </li>
+  
+  </ul>
+
+
+  <button type="button" class="btn btn-success">Submit</button>
+
+  <!-- <div>
+   <h4> Your Score is: {{score}}</h4>
+  </div> -->
+  
+ 
+</div>
