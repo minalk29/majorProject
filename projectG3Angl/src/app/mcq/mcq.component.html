@@ -1,14 +1,10 @@
-
-
-  
-  
- 
-
-    <!-- <p *ngFor="let a of que" >
+   <!-- <p *ngFor="let a of que" >
       <li *ngIf="mystatus" style="color: red;" >{{a.questions}}</li>
       
   </p> -->
-  
+
+
+
   <!-- <button (click)="statusfun()">click</button> -->
   <!-- <a (click)="quizlist()">quiz</a> -->
   <button (click)="quizlist()">get</button>
@@ -42,7 +38,8 @@
   <br><br><br>
   
   <ul class="list-group" *ngFor="let question of ques; let i = index " >
-    
+  
+    <p>Time Remaining:{{hr}}:{{min}}:{{sec}}</p>
     <li class="list-group-item" *ngIf="question.status"  > 
       <div >
         <label><p type="text">{{i+1}}. {{question.questions}}</p></label>
@@ -62,7 +59,7 @@
       
     </li>
     <li class="list-group-item" *ngIf="!question.status"  style="color: blue;"> 
-    
+      
         <div >
           <label><p type="text">{{i+1}}. {{question.questions}}</p></label>
         </div>
@@ -85,7 +82,9 @@
   </ul>
 
 
-  <button type="button" class="btn btn-success">Submit</button>
+  <button type="button" class="btn btn-success"(click)="submitTest()">Submit</button>
+
+  
 
   <!-- <div>
    <h4> Your Score is: {{score}}</h4>

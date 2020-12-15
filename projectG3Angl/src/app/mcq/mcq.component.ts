@@ -5,6 +5,7 @@ import { McqService } from 'src/app/mcq.service';
 import { AddtoFavService } from '../addto-fav.service';
 import { Addfav } from '../addfav';
 import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
+import { QuizTimerService } from '../quiz-timer.service';
 
 @Component({
   selector: 'app-mcq',
@@ -12,7 +13,10 @@ import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/rende
   styleUrls: ['./mcq.component.scss']
 })
 export class McqComponent implements OnInit{
-
+  hr:number=0;
+  min:number=0;
+  sec:number=0;
+  interval:any;
   // @ViewChild('#'+qidid) divView: ElementRef;
   qidid:any;
   ques:any=[];
@@ -25,8 +29,51 @@ export class McqComponent implements OnInit{
   correctans:boolean=false;
   checkAns:boolean=false;
   questionobj:any;
-  constructor(public service:McqService, private myserv: AddtoFavService, private serv: Addfav) { 
+  timer:string='';
+  constructor(public router:Router,public timerserv:QuizTimerService ,public service:McqService, private myserv: AddtoFavService, private serv: Addfav) { 
    
+this.timerserv.getTimer(this.qid).subscribe((res:any)=>
+{
+this.timer=res.time;
+let time:any[]=this.timer.split(":");
+if(time[2]==0)
+{
+  this.sec=60;
+}else{
+
+}
+this.min=parseInt(time[1])-1;
+this.hr=parseInt(time[0]);
+this.interval = setInterval(() => {
+  if(this.sec>0){
+    this.sec--;
+    if(this.sec==0){
+      this.sec=60;
+      this.min--;
+    }
+    if(this.min==0)
+    {
+      this.sec=60;
+      this.min=59;
+      this.hr--;
+    }
+    if(this.sec<10)
+    {
+      this.sec=parseInt('0'+this.sec);
+      console.log(this.sec)
+    }
+    if(this.min<10)
+    {
+      this.min=parseInt('0'+this.min);
+    }
+    if(this.hr<10)
+    {
+      this.hr=parseInt('0'+this.hr);
+      //console.log(this.hr);
+    }
+  }
+},1000)
+})
 
    this.service.getStatusList(this.uid, this.qid).subscribe((res: any) => {
       this.mydata = res;
@@ -80,7 +127,7 @@ console.log(this.que);
   }
 
 
-  
+
 setAnswer(option:string,questionid:number,ans:string,question:any)
 {
   this.qidid = questionid;
@@ -131,7 +178,11 @@ setAnswer(option:string,questionid:number,ans:string,question:any)
 
 };
 
- 
+submitTest()
+{
+  console.log("submitted")
+  this.router.navigate(['/result']);
+}
 
 }
   // check(event:any)

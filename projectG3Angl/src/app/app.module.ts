@@ -12,6 +12,7 @@ import { StatusComponent } from './status/status.component';
 import { McqComponent } from './mcq/mcq.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { AddtoFavComponent } from './addto-fav/addto-fav.component';
+import { ResultComponent } from './result/result.component';
 
 // For MDB Angular Free
 
@@ -20,7 +21,7 @@ import { AddtoFavComponent } from './addto-fav/addto-fav.component';
     AppComponent,
     NavFavComponent,
     StatusComponent,
-    McqComponent,AddtoFavComponent
+    McqComponent,AddtoFavComponent, ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +30,7 @@ import { AddtoFavComponent } from './addto-fav/addto-fav.component';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularMaterialModule,
-   
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
